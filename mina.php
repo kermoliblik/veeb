@@ -140,6 +140,7 @@ function elementideKorrutis($massiiv){
 $massiiv = array(1,0,6,0,0,3,5);
 elementideKorrutis($massiiv);
 */
+/*
 $opilane = array(
     'eesnimi' => 'Mart',
     'perenimi' => 'Traktor',
@@ -154,4 +155,5 @@ echo '<pre>';
  foreach ($opilane as $voti=>$vaartus){
      echo $voti.' - '.$vaartus.'<br />';
  }
-
+*/
+function
