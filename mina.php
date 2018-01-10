@@ -156,4 +156,158 @@ echo '<pre>';
      echo $voti.' - '.$vaartus.'<br />';
  }
 */
-function
+/* */
+
+/*
+function raamatuteTabel($raamatud){
+    echo '<table border="1">';
+    $pealkiriValjstatud = false;
+    foreach ($raamatud as $raamat){
+        echo '<tr>';
+        if(!$pealkiriValjstatud) {
+            $peakiri = array_keys($raamat);
+            foreach ($peakiri as $nimetus) {
+                echo '<th>';
+                echo $nimetus;
+                echo '</th>';
+            }
+            echo '</tr>';
+            $pealkiriValjstatud = true;
+        }
+        foreach ($raamat as $element => $vaartus){
+            echo '<td>';
+            echo $vaartus;
+            echo '</td>';
+        }
+        echo '</tr>';
+    }
+    echo '</table>';
+}
+
+function otsiRaamat($raamatud, $status){
+    $leitudRaamatud = array();
+    foreach ($raamatud as $raamat){
+        if($raamat['status'] == $status){
+            $leitudRaamatud[] = $raamat;
+        }
+    }
+    return $leitudRaamatud;
+}
+
+otsiRaamat($raamatud,'sees');
+raamatuteTabel($raamatud);
+
+$raamatud = array(
+    array(
+        'title' => 'Peppa Goes To London',
+        'author' => 'Ladybird',
+        'print' => 'Penguin',
+        'status' => 'valjas'
+    ),
+    array(
+        'title' => 'Toto, Joonas ja püha Mimoos',
+        'author' => 'Kristiina K.',
+        'print' => 'Heli Kirjastus OÜ',
+        'status' => 'sees'
+    ),
+    array(
+        'title' => 'Lugusid loomadest',
+        'author' => 'Ernest Thompson Seton',
+        'print' => 'Ernest Thompson Seton',
+        'status' => 'sees'
+    ),
+    array(
+        'title' => 'Miljon miksi ja miljon vastust',
+        'author' => '',
+        'print' => 'TEA Kirjastus',
+        'status' => 'sees'
+    ),
+    array(
+        'title' => 'Teadmiste Puu: Maailma Loodus',
+        'author' => 'AJ Wood, Mike Jolley',
+        'print' => 'Pikoprint',
+        'status' => 'valjas'
+    )
+);
+
+*/
+/* vormid */
+/*
+function valjastaVorm(){
+    echo '
+        <form action="'.$_SERVER['PHP_SELF'].'" method="post">
+            Kasutaja: <input type="text" name="kasutaja">
+            <br />
+            parool: <input type="password" name="parool">
+            <br />
+            <input type="submit" value="saada">
+        </form>
+    ';
+}
+
+
+function vormiAndmed(){
+//    $kasutaja = $_POST['kasutaja'];
+//    $parool = $_POST['parool'];
+    echo '<pre>';
+    print_r($_POST);
+    echo '</pre>';
+    if(!empty($_POST)){
+        extract($_POST);
+        foreach ($_POST as $voti=>$vaartus){
+            if(empty($_POST[$voti])){
+                echo 'Andmed peavad olema sisestatud!<br />';
+                exit;
+            }
+        }
+        echo 'Tere, '.$kasutaja.'<br />';
+        echo 'Sinu parooliks on '.$parool.'<br />';
+    }
+}
+valjastaVorm();
+vormiAndmed();
+*/
+/*
+function manguVorm(){
+    $katseteArv = $_POST['katseteArv'];
+    $katseteArv = isset($katseteArv) ? ++$katseteArv : 0;
+    echo '
+        <form action="'.$_SERVER['PHP_SELF'].'" method="post">
+            Arva ära arv 1-50:<br />
+            <input type="text" name="kasutajaArv">
+            <input type="hidden" name="katseteArv" value="'.$katseteArv.'">
+            <br />
+            <input type="submit" value="Kontrolli">
+        </form>
+    ';
+}
+function kontrolliArv(){
+    $serveriArv = 12;
+    if(!empty($_POST)){
+        $kasutajaArv = $_POST['kasutajaArv'];
+        foreach ($_POST as $voti=>$vaartus){
+            if(empty($_POST[$voti])){
+                echo 'Arv peab olema sisestatud!<br />';
+                exit;
+            }
+        }
+        if($kasutajaArv < $serveriArv){
+            echo 'Sinu arv on väiksem kui serveri oma<br />';
+        }
+        if($kasutajaArv > $serveriArv){
+            echo 'Sinu arv on suurem kui serveri oma<br />';
+        }
+        if(abs($kasutajaArv - $serveriArv) <= 5){
+            if($kasutajaArv == $serveriArv){
+                echo 'Palju õnne! Arvasid ära!<br />';
+                echo 'Arvasid ära '.++$_POST['katseteArv'].' katsega';
+                exit;
+            }
+            echo 'Sinu arv on juba väga lähedal<br />';
+        }
+    }
+}
+manguVorm();
+kontrolliArv();
+*/
+
