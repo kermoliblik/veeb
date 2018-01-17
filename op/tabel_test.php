@@ -32,3 +32,4 @@ print_r($minuTabel);
 echo '</pre>';
 // v2ljastame tekst kujul
 $minuTabel->prindiTabel();
+//toimib
