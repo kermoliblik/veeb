@@ -19,7 +19,7 @@ class tekst
      * tekst constructor.
      * @param string $sonad
      */
-    public function __construct($sonad){
+    public function __construct($sonad = ''){
         $this->maaraTekst($sonad);
     }
     function maaraTekst($sonad){

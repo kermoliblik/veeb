@@ -35,4 +35,42 @@ class tabel
         array_push($this->tabeliSisu, $jarjestatudRida);
         return true;
     }
+    function prindiTabel(){
+        echo '<pre>';
+        foreach ($this->pealkirjad as $pealkiri){
+            echo '<b>'.$pealkiri.'</b>'.' ';
+        }
+        echo "\n";
+        foreach ($this->tabeliSisu as $reaElemendid){
+            foreach ($reaElemendid as $reaElement){
+                echo $reaElement.' ';
+            }
+            echo "\n";
+        }
+        echo '</pre>';
+    }
+
+    function prindiTabelV2()
+    {
+        if($this->taustaVarv == "") {
+            parent::prindiTabel();
+        } else {
+            echo "<table border=1>";
+            echo "<tr bgcolor='".$this->taustaVarv."'>";
+            foreach($this->pealkirjad as $pealkiri) {
+                echo "<td><b>" . $pealkiri . "</b></td>", " ";
+            }
+            echo "</tr>";
+            foreach ($this->tabeliSisu as $reaElemendid) {
+                echo "<tr bgcolor='".$this->taustaVarv."'>";
+                foreach ($reaelemendid as $reaElement) {
+                    echo "<td>".$reaElement."</td>";
+                }
+                echo "</tr>";
+
+            }
+            echo "</table>";
+        }
+    }
+
 }
