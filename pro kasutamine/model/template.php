@@ -13,6 +13,18 @@ class template
     var $content = false; //content for HTML file
     var $vars = array(); // values for HTML view template
 
+    /**
+     * template constructor.
+     * @param string $file
+     */
+    public function __construct($file)
+    {
+        $this->file = $file;
+        $this->loadFile();
+    }
+
+
+
     // class tmplate methods
     //  Reading contents from HTML view file
 
@@ -24,31 +36,31 @@ class template
     }
 
     // HTML view file check
-    function loadFile(){
+    function loadFile($file){
         // checking for HTML views excistence
         if (!is_dir(VIEWS_DIR)){
             echo 'There is no directory called '.VIEWS_DIR.' please check directory!<br />';
             exit;
         }
         // views/test.html
-        $f = $this->file; // Replaces $this->file with $f
-        if (file_exists($f) and is_file($f) and is_readable($f)){
-            $this->readFile($f);
+        $file = $this->file; // Replaces $this->file with $f
+        if (file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
         }
         // test.html
-        $f = VIEWS_DIR.$this->file;
-        if (file_exists($f) and is_file($f) and is_readable($f)){
-            $this->readFile($f);
+        $file = VIEWS_DIR.$this->file;
+        if (file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
         }
         // if file is given as test
-        $f =VIEWS_DIR.$this->file.'.html';
-        if (file_exists($f) and is_file($f) and is_readable($f)){
-            $this->readFile($f);
+        $file =VIEWS_DIR.$this->file.'.html';
+        if (file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
         }
         //if file is given as directory.test
-        $f = VIEWS_DIR.str_replace('.','/',$this->file).'.html';
-        if (file_exists($f) and is_file($f) and is_readable($f)){
-            $this->readFile($f);
+        $file = VIEWS_DIR.str_replace('.','/',$this->file).'.html';
+        if (file_exists($file) and is_file($file) and is_readable($file)){
+            $this->readFile($file);
         }
         if ($this->content === false){
             echo 'Unable to read content from file '.$this->file.'<br />';
