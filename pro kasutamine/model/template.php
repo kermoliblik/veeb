@@ -28,11 +28,11 @@ class template
     // class tmplate methods
     //  Reading contents from HTML view file
 
-    function readFile(){
+    function readFile($file){
         /*$fp = fopen($f,'rb');
         $this->content = fread($fp, filesize($f));
         fclose($fp);*/
-        $this->content = file_get_contents($f);
+        $this->content = file_get_contents($file);
     }
 
     // HTML view file check
