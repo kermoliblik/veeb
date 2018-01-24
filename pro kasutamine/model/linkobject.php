@@ -41,9 +41,11 @@ class linkobject extends http
             $this->addToLink($link, $name, $value);
         }
         if($link != ''){
-            $this->baseLink = $this->baseLink.'?'.$link;
+            $link = $this->baseLink.'?'.$link;
+        }else{
+            $link = $this->baseLink;
         }
-        return $this->baseLink;
+        return $link;
     }
 
 
