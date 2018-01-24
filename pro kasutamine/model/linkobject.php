@@ -22,14 +22,29 @@ class linkobject extends http
         $this->baseLink = $this->protocol.HTTP_HOST.SCRIPT_NAME;
     }
 
-    //moodustame paari kujul nimi=vaartus
+    // moodustame paarid kujul nimi=väärtus
+    // ja ühendame paarid omavahel kujul:
+    // nimi1=vaartus1&nimi2=vaartus2 jne
     function addToLink(&$link, $name, $value){
         if($link != ''){
             $link = $link.$this->delim;
         }
         $link = $link.fixUrl($name).$this->eq.fixUrl($value);
     }
-
+    // moodustame valmislink kasutades põhilingi ja
+    // $this->addToLink funktisiooni abil valmistatud paarid
+    // $pairs = array('control'=>'login', 'user'=>'test');
+    // getLink($pairs);
+    function getLink($add = array()){
+        $link = '';
+        foreach ($add as $name=>$value){
+            $this->addToLink($link, $name, $value);
+        }
+        if($link != ''){
+            $this->baseLink = $this->baseLink.'?'.$link;
+        }
+        return $this->baseLink;
+    }
 
 
 }

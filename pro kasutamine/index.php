@@ -25,3 +25,6 @@ echo '<pre>';
 print_r($mainTmpl);
 echo '</pre>';
 echo $http->baseLink.'<br />';
+$pairs = array('control'=>'login', 'user'=>'test');
+$link = $http->getLink($pairs);
+echo $link.'<br />';
