@@ -35,4 +35,13 @@ class http
             }
         }
     }
+
+    //funktsioon mis uurib selle klassi vars massiivi, ja kui on olemas element nimega $name ss anna antud elemendi vaartuse
+    function get($name){
+        if (isset($this->vars[$name])){
+            return $this->vars[$name];
+        }else{
+            return false;
+        }
+    }
 }
