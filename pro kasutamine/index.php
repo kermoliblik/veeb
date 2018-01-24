@@ -24,3 +24,4 @@ echo HTTP_POST.SCRIPT_NAME.'<br />';
 echo '<pre>';
 print_r($mainTmpl);
 echo '</pre>';
+echo $http->baseLink.'<br />';
