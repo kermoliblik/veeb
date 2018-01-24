@@ -5,21 +5,19 @@
  * Date: 24-Jan-18
  * Time: 08:35
  */
-// loeme sisse projekti konfiguratsiooni
+// nõuame konfiguratsiooni faili
 require_once 'conf.php';
-// loome peamalli objekti template klassist
+// loome peamalli objekti
 $mainTmpl = new template('main');
-// määrame reaalväärtused malli elementidele
-$mainTmpl->set('lang', 'et');
-$mainTmpl->set('page_title', 'Lehe pealkiri');
+// reaalväärtuste määramine
+$mainTmpl->set('site_lang', 'et');
+$mainTmpl->set('site_title', 'PV');
 $mainTmpl->set('user', 'Kasutaja');
 $mainTmpl->set('title', 'Pealkiri');
 $mainTmpl->set('lang_bar', 'Keeleriba');
-// katsetame menüü loomist
+// lisame menüü failist
 require_once 'menu.php';
 $mainTmpl->set('content', 'Lehe sisu');
+// väljastame sisuga täidetud mall
 echo $mainTmpl->parse();
-// kontrollime kontandite olemasolu
-$link =  '';
-$http->addToLink($link, 'control', 'login');
-$http->addToLink($link, 'username', 'test');
+echo HTTP_POST.SCRIPT_name.'<br />';

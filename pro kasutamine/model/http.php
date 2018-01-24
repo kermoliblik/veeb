@@ -8,22 +8,31 @@
 
 class http
 {
-    var $vars = array(); //http andmete massiiv
-    var $server = array();
-
+    // klassi muutujad
+    var $vars = array(); // andmed mis jõuavad HTTP kaudu
+    var $server = array(); // serveriga seotud andmed
     /**
      * http constructor.
      */
-    public function __construct()
-    {
+    public function __construct(){
         $this->init();
+        $this->initConst();
     }
-    //serveri andmete massiivid
-
-    /* http constructor */
+    // klassi muutujate väärtustega täitmine
     function init(){
-        $this->vars = array_merge($_get, $_post);
-        this->server = $_server;
+        // nüüd on olemas kõik andmed, mis serverile
+        // jõudunud
+        $this->vars = array_merge($_GET, $_POST);
+        // serveri andmed
+        $this->server = $_SERVER;
     }
-
+    // vajalike konstandite defineerimine
+    function initConst(){
+        $constNames = array('HTTP_HOST', 'SCRIPT_NAME');
+        foreach ($constNames as $constName){
+            if(!defined($constName) and isset($this->server[$constName])){
+                define($constName, $this->server[$constName]);
+            }
+        }
+    }
 }

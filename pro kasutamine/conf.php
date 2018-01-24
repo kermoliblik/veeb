@@ -7,12 +7,13 @@
  */
 //config
 
-//loome vajalikud abikonstantid
+// konfiguratsiooni fail
+// loome vajalikud abikonstandid
 define('MODEL_DIR', 'model/');
 define('VIEWS_DIR', 'views/');
 define('CONTROL_DIR', 'controllers/');
-
-require_once MODEL_DIR.'template.php';
-require_once MODEL_DIR.'http.php';
-//loome vajalikud objektid, mis on pidevalt tool
+// nõuame vajalikke failide olemasolu
+require_once MODEL_DIR.'template.php'; // html vaade failide töötlus
+require_once MODEL_DIR.'http.php'; // HTTP töötlus klass
+// loome vajalikud objektid, mis on pidevalt tööl
 $http = new http();
