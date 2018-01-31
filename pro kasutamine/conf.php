@@ -13,7 +13,7 @@ define('MODEL_DIR', 'model/');
 define('VIEWS_DIR', 'views/');
 define('CONTROL_DIR', 'controllers/');
 define('LIB_DIR', 'lib/');
-define('DEFAULT_CONTROL', 'default');
+define('DEFAULT_CONTROL', 'esimene');
 //nouame abifunktsioonide olemasolu
 require_once LIB_DIR.'utils.php';
 // nõuame vajalikke failide olemasolu
