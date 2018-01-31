@@ -20,7 +20,6 @@ require_once 'menu.php';
 $mainTmpl->set('content', 'Lehe sisu');
 // väljastame sisuga täidetud mall
 echo $mainTmpl->parse();
-echo HTTP_POST.SCRIPT_NAME.'<br />';
-echo '<pre>';
-print_r($http);
-echo '</pre>';
+// kontrollime $http objekti tööd
+$control = $http->get('control');
+echo $control.'<br />';
