@@ -40,4 +40,13 @@ class mysql
             exit;
         }
     }
+    //p'ringusaatmis function
+    function query($sql){
+        $result = mysqli_query($this->conn, $sql);
+        if (!$result){
+            echo 'probleem paringuga'.$sql.'<br />';
+            return false;
+        }
+        return $result;
+    }
 }

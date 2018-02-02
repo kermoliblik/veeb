@@ -22,6 +22,7 @@ require_once 'menu.php';
 
 // väljastame sisuga täidetud mall
 echo $mainTmpl->parse();
+$db->query('SELECT NOW()');
 // kontrollime $http objekti tööd ja andmebaasi t;;d
 echo '<pre>';
 print_r($http->vars);
