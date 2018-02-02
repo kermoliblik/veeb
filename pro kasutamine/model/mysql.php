@@ -33,8 +33,8 @@ class mysql
     }
 
     //function to connect with database
-    function connect($this->host, $this->user, $this->pass, $this->dbname){
-        this->conn = mysqli_connect($host, $user, $pass, $dbname);
+    function connect(){
+        $this->conn = mysqli_connect($this->host, $this->user, $this->pass, $this->dbname);
         if(!$this->conn){
             echo 'Problem connecting to DataBase<br />';
             exit;
