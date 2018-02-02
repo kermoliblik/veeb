@@ -44,4 +44,9 @@ class http
             return false;
         }
     }
+    // funktsioon mis v]imaldab maarata $this->vars[$name] elemendi
+    //ka kindla v''rtuse $value
+    function set($name, $value){
+        $this->vars[$name] = $value;
+    }
 }
