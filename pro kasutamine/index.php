@@ -28,3 +28,8 @@ echo '<pre>';
 print_r($http->vars);
 print_r($db);
 echo '</pre>';
+
+$hetkeKell =$db->getData('SELECT NOW()');
+echo '<pre>';
+print_r($hetkeKell);
+echo '</pre>';

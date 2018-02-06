@@ -8,22 +8,19 @@
 // loome menüü ehitamiseks vajalikud objektid
 $menuTmpl = new template('menu.menu'); // menüü mall
 $itemTmpl = new template('menu.item'); // menüü elemendi mall
-$itemTmpl->set('name', 'avaleht');
-$link = $http->getLink();
-$itemTmpl->set('link', $link);
-$menuTmpl->add('menu_items', $itemTmpl->parse());
-$itemTmpl->set('name', 'esimene');
-$link = $http->getLink(array('control'=>'esimene'));
-$itemTmpl->set('link', $link);
-$menuItem = $itemTmpl->parse(); // string, mis sisaldab ühe nimekirja elemendi lingiga
-$menuTmpl->add('menu_items', $menuItem); // nüüd olemas paar 'menu_items'=>'<li>...</li>
-$itemTmpl->set('name', 'teine');
-$link = $http->getLink(array('control'=>'teine'));
-$itemTmpl->set('link', $link);
-$menuItem = $itemTmpl->parse(); // string, mis sisaldab ühe nimekirja elemendi lingiga
-$menuTmpl->add('menu_items', $menuItem); // nüüd olemas paar 'menu_items'=>'<li>...</li>
+//koostame men[[ ja sisu loomis p2ringu
+$sql = 'SELECT content_id, content, title'.' FROM content WHERE parent_id='.fixDB(0).' AND show_in_menu='.fixDB(1);
+$result = $db->getData($sql);
 
-// ehitame valmis menüü
-$menu = $menuTmpl->parse();
-// lisame valmis menüü lehele
-$mainTmpl->set('menu', $menu);
+// kui andmed on DB olemas siis loome menu
+
+if ($result != false){
+    foreach ($result as $page){
+        $itemTmpl->set('name', $page['title']);
+        $link = $http->getLink(array('page_id'=>$page['content_id']));
+        $itemTmpl->set('link', $link);
+        $menuTmpl->add('menu_items', $itemTmpl->parse());
+    }
+}
+
+$mainTmpl->set('menu', $menuTmpl->parse());
