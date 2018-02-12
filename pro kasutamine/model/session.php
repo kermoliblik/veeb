@@ -14,7 +14,8 @@ class session
     var $http = false; //otse[hendus http objectiga
     var $db = false;
 
-    var $timeout = 1800;
+    var $timeout = 1800; //timeout timer
+    var $anonymous = true; //kas on lubatud anon kasutajad
 
     /**
      * session constructor.
