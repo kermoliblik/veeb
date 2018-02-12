@@ -49,4 +49,14 @@ class http
     function set($name, $value){
         $this->vars[$name] = $value;
     }
+
+    //suunamine
+    function redirect($url = false){
+        if ($url == false){
+            $link = $this->getLink();
+        }
+        $url = str_replace('&amp;', '&', $url);
+        header('Location: '.$url);
+        exit;
+    }
 }
