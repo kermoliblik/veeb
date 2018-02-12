@@ -54,4 +54,39 @@ class session
         $sql = 'DELETE FROM session WHERE '.time().'- UNIX_TIMESTAMP(changed) > '.$this->timeout;
         $this->db->query($sql);
     }
+
+    function checkSession(){
+        $this->clearSessions();
+        if($this->sid === false and $this->anonymous){
+            $this->creatSession();
+        }
+        kui sessioni id pole false
+        if($this->sid !== false){
+            $sql = 'SELECT * FROM session WHERE sid='.fixDB($this->sid);
+            $result = $this->db->getData($sql);
+            if($result == false){
+                if($this->anonymous){
+                    $this->creatSession();
+                }else{
+                    $this->sid = false;
+                    //on vaja ka veebis maha vota aga veel ei ole seda
+                }
+                //defineerin kaks konstanti
+                define('ROLE_ID', 0);
+                define('USER_ID', 0);
+            } else {
+                // kasutame andmed andmebaasist
+                $vars = unserialize($result[0]['user_data']);
+                $this->vars = $vars;
+                $user_data = unserialize($result[0]['user_data']);
+                define('ROLE_ID', $user_data['role_id']);
+                define('USER_ID', $user_data['user_id']);
+                $this->user_data = $user_data;
+            }
+
+        }else {
+            define('ROLE_ID', $user_data['role_id']);
+            define('USER_ID', $user_data['user_id']);
+        }
+    }
 }
