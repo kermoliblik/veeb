@@ -22,5 +22,12 @@ if ($result != false){
         $menuTmpl->add('menu_items', $itemTmpl->parse());
     }
 }
+//sisse logimine
+define('USER_ID', 0);
+//n'itan antud kasutajale logi sisse menyyd
+$itemTmpl->set('name', 'Logi Sisse');
+$link = $http->getLink(array('control'=>'login'));
+$itemTmpl->set('link', $link);
+$menuTmpl->add('menu_items', $itemTmpl->parse());
 
 $mainTmpl->set('menu', $menuTmpl->parse());
