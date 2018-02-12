@@ -14,6 +14,7 @@ $sql = 'SELECT * FROM user WHERE username='.fixDB($username).' AND password='.fi
 $result = $db->getData($sql);
 if($result != false){
     //logime kasutaja sisse ja avama sessiooni
+    $http->redirect();
 
 }else{
     //probleem sisse logimisega ja suuname tagasi sisselogimis vormile
