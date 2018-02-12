@@ -14,6 +14,8 @@ class session
     var $http = false; //otse[hendus http objectiga
     var $db = false;
 
+    var $timeout = 1800;
+
     /**
      * session constructor.
      * @param bool $http
